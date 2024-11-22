@@ -1,0 +1,76 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.main-chat-list-box {
+  padding-left: 20px;
+  width: 260px;
+  /* overflow-y: auto; */
+}
+
+.list-container {
+  width: 360px;
+  padding: 0;
+  height: 472px;
+
+  overflow-y: auto;
+}
+
+.list-item {
+  width: 100%;
+  justify-content: space-between;
+  height: 72px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-card {
+  height: 52px;
+  width: 52px;
+  margin-left: -4 px;
+  border-radius: 50%;
+}
+
+.list-item .content-main .css-rizt0-MuiTypography-root {
+  padding-left: 10px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  width: 100px;
+  height: 20px;
+}
+
+.list-item .MuiListItemText-root {
+  margin-left: 12px;
+}
+.list-item .message-main .css-rizt0-MuiTypography-root {
+  width: 247px;
+  height: 18px;
+  font-size: small;
+  font-weight: 100;
+  margin-left: 10px;
+  opacity: 0.4;
+}
+.chat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.list-chat {
+  width: 95%;
+  display: flex;
+}
+
+.tick-icon {
+  padding-top: 24px;
+}
+.main-box-icon-status {
+  display: flex;
+  justify-content: space-between;
+  width: 70px;
+  gap: 8px;
+}

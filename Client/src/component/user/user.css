@@ -1,0 +1,91 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.main-box-side-bar {
+}
+.main-side-bar-div {
+  width: 400px;
+  height: 100vh;
+  background-color: #ffffff;
+}
+.head-main {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+}
+.main-layout {
+  display: flex;
+}
+
+.main-div-heare {
+  flex: 1;
+}
+.main-side-bar-div .text-main {
+  font-family: "Plus Jakarta Sans";
+  width: 159px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  font-weight: 900;
+  font-size: 18px;
+}
+.sidebar-serach {
+  width: 100%;
+  padding: 8px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20;
+}
+.main-side {
+  padding: 26px 20px 24px 20px;
+}
+.icon-adornment {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  color: gray;
+}
+
+.list-item .tick-icon {
+  margin-right: 5px;
+}
+.main-icons {
+  display: flex;
+  justify-content: space-between;
+}
+.main-profile-user {
+  padding-top: 30px;
+  display: flex;
+  margin-left: 30px;
+  height: 50px;
+  width: 150px;
+  justify-content: space-between;
+}
+.main-menu {
+  display: flex;
+  width: 120px;
+  height: 24px;
+  margin-right: 50px;
+  padding-top: 30px;
+  justify-content: space-between;
+}
+.user-name {
+  padding-bottom: 5px;
+}
+.main-profile {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.user-on-off {
+  font-size: small;
+  font-weight: 100;
+  opacity: 0.4;
+}
+.main-box-icon-status .icon-staus {
+  color: #33b843;
+  width: 18px;
+  height: 18px;
+}
