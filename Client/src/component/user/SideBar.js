@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./user.css";
 import Index from "../Index";
 import ChatList from "../../container/pages/chatlist/ChatList";
-const SideBar = () => {
+const SideBar = ({ setUserInfo, userInfo }) => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <Index.Box className="main-box-side-bar">
       <Index.Box className="main-side-bar-div">
@@ -22,11 +24,17 @@ const SideBar = () => {
               }}
               className="sidebar-serach"
               placeholder="Search in dashboard"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </Index.Box>
         </Index.Box>
         <Index.Box></Index.Box>
-        <ChatList />
+        <ChatList
+          searchQuery={searchQuery}
+          setUserInfo={setUserInfo}
+          userInfo={userInfo}
+        />
       </Index.Box>
     </Index.Box>
   );

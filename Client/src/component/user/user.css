@@ -32,6 +32,7 @@ body {
 .sidebar-serach {
   width: 100%;
   padding: 8px;
+  background-color: #f7f7fd;
 }
 
 .search-icon {

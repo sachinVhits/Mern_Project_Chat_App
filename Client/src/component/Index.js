@@ -17,10 +17,14 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import Jpg from "../assets/Jpg.js";
+import Png from "../assets/images/png.js";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import CallIcon from "@mui/icons-material/Call";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import DoneAllIcon from "@mui/icons-material/DoneAll";
+import SendIcon from "@mui/icons-material/Send";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
 export default {
   SideBar,
   Header,
@@ -44,4 +48,8 @@ export default {
   CallIcon,
   WidgetsIcon,
   FiberManualRecordIcon,
+  DoneAllIcon,
+  SendIcon,
+  InsertLinkIcon,
+  Png,
 };

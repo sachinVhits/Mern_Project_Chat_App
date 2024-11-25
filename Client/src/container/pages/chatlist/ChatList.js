@@ -1,12 +1,17 @@
 import React from "react";
 import Index from "../../../component/Index";
 import "../chatlist/chatlist.css";
-import DoneAllIcon from "@mui/icons-material/DoneAll";
 
-const ChatList = () => {
+const ChatList = ({ searchQuery, setUserInfo, userInfo }) => {
   const userMessages = [
     {
       userName: "Sachin",
+      message: "See you soon.",
+      time: "10:50 AM",
+      isSeen: true,
+    },
+    {
+      userName: "Surabhi",
       message: "See you soon.",
       time: "10:50 AM",
       isSeen: true,
@@ -41,86 +46,27 @@ const ChatList = () => {
       time: "10:40 AM",
       isSeen: false,
     },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: false,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: false,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: false,
-    },
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: false,
-    },
-
-    {
-      userName: "Surabhi",
-      message: "See you soon.",
-      time: "10:50 AM",
-      isSeen: true,
-    },
   ];
+
+  const filteredMessages = userMessages.filter(
+    (msg) =>
+      msg.userName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      msg.message.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <Index.Box className="main-chat-list-box">
       <Index.List className="list-container">
-        {userMessages.map((msg, index) => (
-          <Index.ListItem className="list-item" key={index}>
+        {filteredMessages.map((msg, index) => (
+          <Index.ListItem
+            className={`list-item ${
+              userInfo?.userName === msg.userName ? "selected-user" : ""
+            }`}
+            key={index}
+            onClick={() => {
+              setUserInfo(msg);
+            }}
+          >
             <Index.Box className="list-chat">
               <Index.ListItemAvatar>
                 <Index.CardMedia
@@ -130,23 +76,31 @@ const ChatList = () => {
                 />
               </Index.ListItemAvatar>
               <Index.Box className="chat-box">
-                <Index.ListItemText
-                  className="content-main"
-                  primary={msg.userName}
-                />
-                <Index.ListItemText className="message-main">
-                  {msg.message}
-                </Index.ListItemText>
+                <Index.Box className="time-name">
+                  <Index.ListItemText
+                    className="content-main"
+                    primary={msg.userName}
+                  />
+                  <Index.Typography className="time-css">
+                    {msg.time}
+                  </Index.Typography>
+                </Index.Box>
+                <Index.Box className="message-tick">
+                  <Index.ListItemText className="message-main">
+                    {msg.message}
+                  </Index.ListItemText>
+                  <Index.DoneAllIcon
+                    className="tick"
+                    style={{
+                      color: msg.isSeen ? "blue" : "gray",
+                    }}
+                  />
+                </Index.Box>
               </Index.Box>
+              <Index.Box></Index.Box>
             </Index.Box>
-            <Index.Box className="tick-icon">
-              <DoneAllIcon
-                className="tick"
-                style={{
-                  color: msg.isSeen ? "blue" : "gray",
-                }}
-              />
-            </Index.Box>
+
+            <Index.Box className="tick-icon"></Index.Box>
           </Index.ListItem>
         ))}
       </Index.List>

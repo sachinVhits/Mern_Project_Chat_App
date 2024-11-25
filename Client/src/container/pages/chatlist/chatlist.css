@@ -24,6 +24,9 @@ body {
   display: flex;
   align-items: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .main-card {
@@ -33,6 +36,12 @@ body {
   border-radius: 50%;
 }
 
+.selected-user {
+  /* background-color: #333; */
+  background-color: #e4e4f4;
+  /* background-color: #f7f7fd; */
+  color: black;
+}
 .list-item .content-main .css-rizt0-MuiTypography-root {
   padding-left: 10px;
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -65,12 +74,47 @@ body {
   display: flex;
 }
 
-.tick-icon {
+/* .tick-icon {
   padding-top: 24px;
+} */
+.tick-icon {
+  align-items: center;
+  /* gap: 5px; */
+  padding-top: 12px;
+  padding-right: 5px;
+  justify-content: flex-end;
 }
+
+.tick-icon .time-css {
+  font-size: 12px;
+  color: #999;
+  white-space: nowrap;
+  margin-right: 25px;
+  padding-right: 10px;
+}
+
 .main-box-icon-status {
   display: flex;
   justify-content: space-between;
   width: 70px;
   gap: 8px;
+}
+
+.time-name {
+  display: flex;
+  flex-direction: row;
+  width: 283px;
+}
+
+.tick-icon .tick {
+  padding-top: 20px;
+  padding-right: 19px;
+}
+
+.time-name .time-css {
+  padding-left: 20px;
+}
+.message-tick {
+  display: flex;
+  width: 260px;
 }
