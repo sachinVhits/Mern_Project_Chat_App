@@ -25,6 +25,8 @@ import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import DoneAllIcon from "@mui/icons-material/DoneAll";
 import SendIcon from "@mui/icons-material/Send";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
+import AttachmentIcon from "@mui/icons-material/Attachment";
+
 export default {
   SideBar,
   Header,
@@ -52,4 +54,5 @@ export default {
   SendIcon,
   InsertLinkIcon,
   Png,
+  AttachmentIcon,
 };

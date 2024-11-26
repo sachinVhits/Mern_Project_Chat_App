@@ -1,24 +1,31 @@
 import React, { useState, useRef } from "react";
 import Index from "../../../component/Index";
 import "../message/message.css";
-
 const Message = ({ userInfo }) => {
   const [message, setMessage] = useState("");
+  const [showAllImages, setShowAllImages] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleIconClick = () => {
     fileInputRef.current.click();
   };
 
+  const handleImageClick = (id) => {
+    setShowAllImages((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       console.log("Selected file:", file);
     }
   };
+
   const chatArray = [
     {
-      // from: "Hi! How are you?",
+      _id: 1,
       timestamp: "2024-11-01T09:00:00Z",
       image: [
         Index.Png.nature2Image,
@@ -26,209 +33,208 @@ const Message = ({ userInfo }) => {
         Index.Png.nature2Image,
         Index.Png.nature2Image,
       ],
-      // image: Index.Png.natureImage,
     },
     {
+      _id: 2,
       to: "I'm good, thanks! What about you?",
       timestamp: "2024-11-01T09:02:00Z",
     },
     {
+      _id: 3,
       from: "I'm doing great! Working on a new project.",
       timestamp: "2024-11-01T09:05:00Z",
     },
     {
+      _id: 4,
       from: "That’s awesome! Let me know if I can help.",
       timestamp: "2024-11-01T09:07:00Z",
     },
-    { to: "Sounds good!", timestamp: "2024-11-02T10:15:00Z" },
-    { from: "What have you been up to?", timestamp: "2024-11-02T10:20:00Z" },
     {
+      _id: 5,
+      to: "Sounds good!",
+      timestamp: "2024-11-02T10:15:00Z",
+    },
+    {
+      _id: 6,
+      from: "What have you been up to?",
+      timestamp: "2024-11-02T10:20:00Z",
+    },
+    {
+      _id: 7,
       to: "Just working on some new tech stuff. You?",
       timestamp: "2024-11-02T10:25:00Z",
     },
     {
+      _id: 8,
       from: "Same here, trying to learn some new frameworks.",
       timestamp: "2024-11-02T10:30:00Z",
     },
     {
+      _id: 9,
       to: "That’s great! Which frameworks are you learning?",
       timestamp: "2024-11-02T10:35:00Z",
     },
     {
+      _id: 10,
       from: "I’m diving into React and Node.js more deeply.",
       timestamp: "2024-11-02T10:40:00Z",
-      image: [Index.Png.nature2Image, Index.Png.natureImage],
+      image: [
+        Index.Png.nature2Image,
+        Index.Png.natureImage,
+        Index.Png.nature2Image,
+        Index.Png.nature2Image,
+      ],
     },
     {
+      _id: 11,
       to: "Nice! I’m focusing on Angular and Express.",
       timestamp: "2024-11-02T10:45:00Z",
     },
     {
+      _id: 12,
       from: "Cool, let me know if you need any help with Node.js!",
       timestamp: "2024-11-02T10:50:00Z",
     },
-    { to: "Definitely! I’ll reach out.", timestamp: "2024-11-02T10:55:00Z" },
     {
-      from: "I’ve been experimenting with some APIs lately.",
-      timestamp: "2024-11-02T11:00:00Z",
+      _id: 13,
+      to: "Definitely! I’ll reach out.",
+      timestamp: "2024-11-02T10:55:00Z",
     },
     {
-      to: "That sounds interesting! What kind of APIs?",
-      timestamp: "2024-11-02T11:05:00Z",
+      _id: 14,
+      from: "I was also thinking of learning some more about databases.",
+      timestamp: "2024-11-03T11:00:00Z",
     },
     {
-      from: "Mostly social media APIs, like Twitter and Instagram.",
-      timestamp: "2024-11-02T11:10:00Z",
+      _id: 15,
+      to: "Oh, great! Which database are you looking into?",
+      timestamp: "2024-11-03T11:05:00Z",
     },
     {
-      to: "That’s awesome! How’s that going?",
-      timestamp: "2024-11-02T11:15:00Z",
+      _id: 16,
+      from: "Maybe MongoDB or PostgreSQL.",
+      timestamp: "2024-11-03T11:10:00Z",
     },
     {
-      from: "Pretty well, actually. Learning a lot.",
-      timestamp: "2024-11-02T11:20:00Z",
+      _id: 17,
+      to: "Nice choices! I’ve worked with both of those. They’re really powerful.",
+      timestamp: "2024-11-03T11:15:00Z",
     },
     {
-      to: "Glad to hear that! Any cool projects you're working on?",
-      timestamp: "2024-11-02T11:25:00Z",
+      _id: 18,
+      from: "I’m leaning more towards MongoDB, actually.",
+      timestamp: "2024-11-03T11:20:00Z",
     },
     {
-      from: "Yeah, I’m building a small app with Twitter’s API.",
-      timestamp: "2024-11-02T11:30:00Z",
+      _id: 19,
+      to: "Sounds good! MongoDB is really great for scalability.",
+      timestamp: "2024-11-03T11:25:00Z",
     },
     {
-      to: "Sounds fun! What does the app do?",
-      timestamp: "2024-11-02T11:35:00Z",
+      _id: 20,
+      from: "Yeah, that’s what I’ve heard. It’s really flexible too.",
+      timestamp: "2024-11-03T11:30:00Z",
     },
     {
-      from: "It fetches the latest tweets based on a hashtag.",
-      timestamp: "2024-11-02T11:40:00Z",
+      _id: 21,
+      to: "Exactly! And the document-based model makes it easy to work with.",
+      timestamp: "2024-11-03T11:35:00Z",
     },
     {
-      to: "That’s cool! Any issues so far?",
-      timestamp: "2024-11-02T11:45:00Z",
+      _id: 22,
+      from: "I’ll look more into it. Thanks for the advice!",
+      timestamp: "2024-11-03T11:40:00Z",
     },
     {
-      from: "Just a few rate limit issues, but nothing major.",
-      timestamp: "2024-11-02T11:50:00Z",
+      _id: 23,
+      to: "Anytime! Let me know if you need help with anything.",
+      timestamp: "2024-11-03T11:45:00Z",
     },
     {
-      to: "That happens. Twitter's API can be tricky.",
-      timestamp: "2024-11-02T11:55:00Z",
+      _id: 24,
+      from: "Will do! Take care!",
+      timestamp: "2024-11-03T11:50:00Z",
     },
     {
-      from: "Yeah, but it’s a fun challenge.",
-      timestamp: "2024-11-02T12:00:00Z",
+      _id: 25,
+      to: "You too, have a great day!",
+      timestamp: "2024-11-03T11:55:00Z",
     },
     {
-      to: "I feel you. I’ve been working on something similar.",
-      timestamp: "2024-11-02T12:05:00Z",
+      _id: 26,
+      from: "Thanks, you as well!",
+      timestamp: "2024-11-03T12:00:00Z",
     },
     {
-      from: "That’s awesome! What are you building?",
-      timestamp: "2024-11-02T12:10:00Z",
+      _id: 27,
+      to: "Catch up soon!",
+      timestamp: "2024-11-03T12:05:00Z",
     },
     {
-      to: "I’m building a weather app using OpenWeather API.",
-      timestamp: "2024-11-02T12:15:00Z",
+      _id: 28,
+      from: "Looking forward to it!",
+      timestamp: "2024-11-03T12:10:00Z",
     },
     {
-      from: "Sounds amazing! Is it a mobile or web app?",
-      timestamp: "2024-11-02T12:20:00Z",
+      _id: 29,
+      to: "Alright, see you later!",
+      timestamp: "2024-11-03T12:15:00Z",
     },
     {
-      to: "It’s a web app, but I’m thinking of making it mobile-friendly.",
-      timestamp: "2024-11-02T12:25:00Z",
+      _id: 30,
+      from: "Bye for now!",
+      timestamp: "2024-11-03T12:20:00Z",
     },
     {
-      from: "That’s a great idea! Let me know if you need any help with React.",
-      timestamp: "2024-11-02T12:30:00Z",
+      _id: 31,
+      to: "Bye!",
+      timestamp: "2024-11-03T12:25:00Z",
     },
     {
-      to: "Thanks! I’ll definitely keep you in mind.",
-      timestamp: "2024-11-02T12:35:00Z",
+      _id: 32,
+      from: "See you later!",
+      timestamp: "2024-11-03T12:30:00Z",
     },
     {
-      from: "No problem! Happy to help anytime.",
-      timestamp: "2024-11-02T12:40:00Z",
+      _id: 33,
+      to: "Take care!",
+      timestamp: "2024-11-03T12:35:00Z",
     },
     {
-      to: "I’m also working on some game mechanics in JavaScript.",
-      timestamp: "2024-11-02T12:45:00Z",
+      _id: 34,
+      from: "You too!",
+      timestamp: "2024-11-03T12:40:00Z",
     },
     {
-      from: "That sounds fun! What kind of game?",
-      timestamp: "2024-11-02T12:50:00Z",
+      _id: 35,
+      to: "Alright, I’ve got to run now.",
+      timestamp: "2024-11-03T12:45:00Z",
     },
     {
-      to: "It’s a simple puzzle game, nothing too fancy.",
-      timestamp: "2024-11-02T12:55:00Z",
+      _id: 36,
+      from: "Okay, see you soon!",
+      timestamp: "2024-11-03T12:50:00Z",
     },
     {
-      from: "That sounds great! I’m sure it’ll be awesome.",
-      timestamp: "2024-11-02T13:00:00Z",
+      _id: 37,
+      to: "Later!",
+      timestamp: "2024-11-03T12:55:00Z",
     },
     {
-      to: "I hope so! I’ll share it once it’s finished.",
-      timestamp: "2024-11-02T13:05:00Z",
-    },
-    { from: "Looking forward to it!", timestamp: "2024-11-02T13:10:00Z" },
-    {
-      to: "Thanks! How’s your project going?",
-      timestamp: "2024-11-02T13:15:00Z",
+      _id: 38,
+      from: "See you soon!",
+      timestamp: "2024-11-03T13:00:00Z",
     },
     {
-      from: "It’s going well, just need to finalize a few things.",
-      timestamp: "2024-11-02T13:20:00Z",
+      _id: 39,
+      to: "Take care of yourself!",
+      timestamp: "2024-11-03T13:05:00Z",
     },
     {
-      to: "I’m sure it’ll be great when it’s done!",
-      timestamp: "2024-11-02T13:25:00Z",
+      _id: 40,
+      from: "You too! Bye for now.",
+      timestamp: "2024-11-03T13:10:00Z",
     },
-    {
-      from: "Thanks, I’m working hard on it!",
-      timestamp: "2024-11-02T13:30:00Z",
-    },
-    { to: "Keep it up! You'll get there.", timestamp: "2024-11-02T13:35:00Z" },
-    {
-      from: "Definitely! How about you? Any new ideas?",
-      timestamp: "2024-11-02T13:40:00Z",
-    },
-    {
-      to: "Not yet, but I’m brainstorming some fun things.",
-      timestamp: "2024-11-02T13:45:00Z",
-    },
-    {
-      from: "Exciting! Let me know when you come up with something.",
-      timestamp: "2024-11-02T13:50:00Z",
-    },
-    {
-      to: "For sure! I'll keep you updated.",
-      timestamp: "2024-11-02T13:55:00Z",
-    },
-    {
-      from: "Great! Let’s both keep pushing forward!",
-      timestamp: "2024-11-02T14:00:00Z",
-    },
-    {
-      to: "Absolutely! We’ll make awesome stuff together.",
-      timestamp: "2024-11-02T14:05:00Z",
-    },
-    {
-      from: "I can’t wait to see what we both come up with.",
-      timestamp: "2024-11-02T14:10:00Z",
-    },
-    {
-      to: "Same here, let’s make it happen!",
-      timestamp: "2024-11-02T14:15:00Z",
-    },
-    {
-      from: "Let’s do it! Best of luck with your project!",
-      timestamp: "2024-11-02T14:20:00Z",
-    },
-    { to: "Thanks! Same to you!", timestamp: "2024-11-02T14:25:00Z" },
-    { from: "We’ve got this!", timestamp: "2024-11-02T14:30:00Z" },
-    { to: "Definitely!", timestamp: "2024-11-02T14:35:00Z" },
   ];
 
   if (!userInfo) {
@@ -247,7 +253,6 @@ const Message = ({ userInfo }) => {
       setMessage("");
     }
   };
-
   return (
     <>
       <Index.Box className="main-message">
@@ -259,6 +264,8 @@ const Message = ({ userInfo }) => {
 
             {chatArray.map((msg, index) => {
               const isSender = msg.from;
+              const isImagesExpanded = showAllImages[msg._id] || false;
+
               return (
                 // <Index.Box
                 //   key={index}
@@ -301,23 +308,173 @@ const Message = ({ userInfo }) => {
                 //   )}
                 // </Index.Box>
 
+                // <Index.Box
+                //   key={index}
+                //   className={`message-container ${
+                //     isSender ? "sender" : "receiver"
+                //   }`}
+                // >
+                //   {Array.isArray(msg.image) && msg.image.length > 0 ? (
+                //     <Index.Box className="message-image">
+                //       {msg.image.map((image, imgIndex) => (
+                //         <img
+                //           key={imgIndex}
+                //           src={image}
+                //           alt="Message Attachment"
+                //           // className="image"
+                //           className={`image ${
+                //             imgIndex === 1 && msg.image.length > 2
+                //               ? "light-opacity"
+                //               : ""
+                //           }`}
+                //         />
+                //       ))}
+                //     </Index.Box>
+                //   ) : (
+                //     <Index.Box className="message-box">
+                //       <Index.Box
+                //         className={
+                //           isSender ? "sender-message" : "receiver-message"
+                //         }
+                //       >
+                //         <Index.Typography className="message-text">
+                //           {msg.from || msg.to}
+                //         </Index.Typography>
+                //       </Index.Box>
+                //       <Index.Box
+                //         className={isSender ? "test-date" : "test-reciver-date"}
+                //       >
+                //         <Index.Box className="date-show-chat-box">
+                //           Today
+                //         </Index.Box>
+                //         <Index.Box className="main-box-time-show">
+                //           <Index.Typography className="message-time-date">
+                //             {new Date(msg.timestamp).toLocaleTimeString([], {
+                //               hour: "2-digit",
+                //               minute: "2-digit",
+                //             })}
+                //           </Index.Typography>
+                //         </Index.Box>
+                //       </Index.Box>
+                //     </Index.Box>
+                //   )}
+                // </Index.Box>
+
+                // <Index.Box
+                //   key={index}
+                //   className={`message-container ${
+                //     isSender ? "sender" : "receiver"
+                //   }`}
+                // >
+                //   {Array.isArray(msg.image) && msg.image.length > 0 ? (
+                //     <Index.Box className="message-image">
+                //       {msg.image.slice(0, 2).map((image, imgIndex) => (
+                //         <Index.Box key={imgIndex} className="image-container">
+                //           <img
+                //             src={image}
+                //             alt="Message Attachment"
+                //             className={`image ${
+                //               imgIndex === 1 && msg.image.length > 2
+                //                 ? "light-opacity"
+                //                 : ""
+                //             }`}
+                //           />
+                //         </Index.Box>
+                //       ))}
+                //       {msg.image.length > 2 && !showAllImages && (
+                //         <Index.Box
+                //           className="image-count"
+                //           onClick={handleImageClick}
+                //         >
+                //           +{msg.image.length - 2} more
+                //         </Index.Box>
+                //       )}
+                //     </Index.Box>
+                //   ) : (
+                //     <Index.Box className="message-box">
+                //       <Index.Box
+                //         className={
+                //           isSender ? "sender-message" : "receiver-message"
+                //         }
+                //       >
+                //         <Index.Typography className="message-text">
+                //           {msg.from || msg.to}
+                //         </Index.Typography>
+                //       </Index.Box>
+                //       <Index.Box
+                //         className={isSender ? "test-date" : "test-reciver-date"}
+                //       >
+                //         <Index.Box className="date-show-chat-box">
+                //           Today
+                //         </Index.Box>
+                //         <Index.Box className="main-box-time-show">
+                //           <Index.Typography className="message-time-date">
+                //             {new Date(msg.timestamp).toLocaleTimeString([], {
+                //               hour: "2-digit",
+                //               minute: "2-digit",
+                //             })}
+                //           </Index.Typography>
+                //         </Index.Box>
+                //       </Index.Box>
+                //     </Index.Box>
+                //   )}
+                // </Index.Box>
+
                 <Index.Box
                   key={index}
                   className={`message-container ${
                     isSender ? "sender" : "receiver"
                   }`}
                 >
-                  {console.log(msg.image)}
                   {Array.isArray(msg.image) && msg.image.length > 0 ? (
                     <Index.Box className="message-image">
-                      {msg.image.map((image, imgIndex) => (
-                        <img
-                          key={imgIndex}
-                          src={image}
-                          alt="Message Attachment"
-                          className="image"
-                        />
-                      ))}
+                      <Index.Box className="image-row">
+                        {msg.image.slice(0, 2).map((image, imageIndex) => (
+                          <div
+                            key={imageIndex}
+                            className={`image-wrapper ${
+                              imageIndex === 1 &&
+                              msg.image.length > 2 &&
+                              !isImagesExpanded
+                                ? "blurred"
+                                : ""
+                            }`}
+                            onClick={
+                              imageIndex === 1 &&
+                              msg.image.length > 2 &&
+                              !isImagesExpanded
+                                ? () => handleImageClick(msg._id)
+                                : null
+                            }
+                          >
+                            <img
+                              src={image}
+                              alt={`Message Attachment ${imageIndex + 1}`}
+                              className="image-chat"
+                            />
+                            {imageIndex === 1 &&
+                              msg.image.length > 2 &&
+                              !isImagesExpanded && (
+                                <p className="image-overlay">
+                                  +{msg.image.length - 2}
+                                </p>
+                              )}
+                          </div>
+                        ))}
+                      </Index.Box>
+
+                      {isImagesExpanded && (
+                        <Index.Box className="image-grid">
+                          {msg.image.slice(2).map((image, imageIndex) => (
+                            <img
+                              key={imageIndex + 2}
+                              src={image}
+                              alt={`Image ${imageIndex + 3}`}
+                              className="image-chat"
+                            />
+                          ))}
+                        </Index.Box>
+                      )}
                     </Index.Box>
                   ) : (
                     <Index.Box className="message-box">
@@ -330,14 +487,20 @@ const Message = ({ userInfo }) => {
                           {msg.from || msg.to}
                         </Index.Typography>
                       </Index.Box>
-
-                      <Index.Box className={isSender ? "test-date" : ""}>
-                        <Index.Typography className="message-time-date">
-                          {new Date(msg.timestamp).toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
-                        </Index.Typography>
+                      <Index.Box
+                        className={isSender ? "test-date" : "test-reciver-date"}
+                      >
+                        <Index.Box className="date-show-chat-box">
+                          Today
+                        </Index.Box>
+                        <Index.Box className="main-box-time-show">
+                          <Index.Typography className="message-time-date">
+                            {new Date(msg.timestamp).toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </Index.Typography>
+                        </Index.Box>
                       </Index.Box>
                     </Index.Box>
                   )}
@@ -364,7 +527,7 @@ const Message = ({ userInfo }) => {
             </Index.Box>
             <Index.Box className="main-send-icon-file">
               <Index.Box className="send-file-icon">
-                <Index.InsertLinkIcon onClick={handleIconClick} />
+                <Index.AttachmentIcon onClick={handleIconClick} />
                 <input
                   type="file"
                   ref={fileInputRef}
