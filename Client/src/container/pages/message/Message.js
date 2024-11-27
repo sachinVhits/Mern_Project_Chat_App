@@ -1,9 +1,19 @@
 import React, { useState, useRef } from "react";
 import Index from "../../../component/Index";
+
 import "../message/message.css";
 const Message = ({ userInfo }) => {
   const [message, setMessage] = useState("");
   const [showAllImages, setShowAllImages] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const [image, setImage] = React.useState(false);
+  const handleClickOpen = (image) => {
+    setImage(image);
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const fileInputRef = useRef(null);
 
   const handleIconClick = () => {
@@ -267,159 +277,6 @@ const Message = ({ userInfo }) => {
               const isImagesExpanded = showAllImages[msg._id] || false;
 
               return (
-                // <Index.Box
-                //   key={index}
-                //   className={`message-container ${
-                //     isSender ? "sender" : "receiver"
-                //   }`}
-                // >
-                //   {console.log(msg.image)}
-                //   {msg.image.map(()=>{
-
-                //   }) ? (
-                //     <Index.Box className="message-image">
-                //       <img
-                //         src={msg.image}
-                //         alt="Message Attachment"
-                //         className="image"
-                //       />
-                //     </Index.Box>
-                //   ) : (
-                //     <Index.Box className="message-box">
-                //       <Index.Box
-                //         className={
-                //           isSender ? "sender-message" : "receiver-message"
-                //         }
-                //       >
-                //         <Index.Typography className="message-text">
-                //           {msg.from || msg.to}
-                //         </Index.Typography>
-                //       </Index.Box>
-
-                //       <Index.Box className={isSender ? "test-date" : ""}>
-                //         <Index.Typography className="message-time-date">
-                //           {new Date(msg.timestamp).toLocaleTimeString([], {
-                //             hour: "2-digit",
-                //             minute: "2-digit",
-                //           })}
-                //         </Index.Typography>
-                //       </Index.Box>
-                //     </Index.Box>
-                //   )}
-                // </Index.Box>
-
-                // <Index.Box
-                //   key={index}
-                //   className={`message-container ${
-                //     isSender ? "sender" : "receiver"
-                //   }`}
-                // >
-                //   {Array.isArray(msg.image) && msg.image.length > 0 ? (
-                //     <Index.Box className="message-image">
-                //       {msg.image.map((image, imgIndex) => (
-                //         <img
-                //           key={imgIndex}
-                //           src={image}
-                //           alt="Message Attachment"
-                //           // className="image"
-                //           className={`image ${
-                //             imgIndex === 1 && msg.image.length > 2
-                //               ? "light-opacity"
-                //               : ""
-                //           }`}
-                //         />
-                //       ))}
-                //     </Index.Box>
-                //   ) : (
-                //     <Index.Box className="message-box">
-                //       <Index.Box
-                //         className={
-                //           isSender ? "sender-message" : "receiver-message"
-                //         }
-                //       >
-                //         <Index.Typography className="message-text">
-                //           {msg.from || msg.to}
-                //         </Index.Typography>
-                //       </Index.Box>
-                //       <Index.Box
-                //         className={isSender ? "test-date" : "test-reciver-date"}
-                //       >
-                //         <Index.Box className="date-show-chat-box">
-                //           Today
-                //         </Index.Box>
-                //         <Index.Box className="main-box-time-show">
-                //           <Index.Typography className="message-time-date">
-                //             {new Date(msg.timestamp).toLocaleTimeString([], {
-                //               hour: "2-digit",
-                //               minute: "2-digit",
-                //             })}
-                //           </Index.Typography>
-                //         </Index.Box>
-                //       </Index.Box>
-                //     </Index.Box>
-                //   )}
-                // </Index.Box>
-
-                // <Index.Box
-                //   key={index}
-                //   className={`message-container ${
-                //     isSender ? "sender" : "receiver"
-                //   }`}
-                // >
-                //   {Array.isArray(msg.image) && msg.image.length > 0 ? (
-                //     <Index.Box className="message-image">
-                //       {msg.image.slice(0, 2).map((image, imgIndex) => (
-                //         <Index.Box key={imgIndex} className="image-container">
-                //           <img
-                //             src={image}
-                //             alt="Message Attachment"
-                //             className={`image ${
-                //               imgIndex === 1 && msg.image.length > 2
-                //                 ? "light-opacity"
-                //                 : ""
-                //             }`}
-                //           />
-                //         </Index.Box>
-                //       ))}
-                //       {msg.image.length > 2 && !showAllImages && (
-                //         <Index.Box
-                //           className="image-count"
-                //           onClick={handleImageClick}
-                //         >
-                //           +{msg.image.length - 2} more
-                //         </Index.Box>
-                //       )}
-                //     </Index.Box>
-                //   ) : (
-                //     <Index.Box className="message-box">
-                //       <Index.Box
-                //         className={
-                //           isSender ? "sender-message" : "receiver-message"
-                //         }
-                //       >
-                //         <Index.Typography className="message-text">
-                //           {msg.from || msg.to}
-                //         </Index.Typography>
-                //       </Index.Box>
-                //       <Index.Box
-                //         className={isSender ? "test-date" : "test-reciver-date"}
-                //       >
-                //         <Index.Box className="date-show-chat-box">
-                //           Today
-                //         </Index.Box>
-                //         <Index.Box className="main-box-time-show">
-                //           <Index.Typography className="message-time-date">
-                //             {new Date(msg.timestamp).toLocaleTimeString([], {
-                //               hour: "2-digit",
-                //               minute: "2-digit",
-                //             })}
-                //           </Index.Typography>
-                //         </Index.Box>
-                //       </Index.Box>
-                //     </Index.Box>
-                //   )}
-                // </Index.Box>
-
                 <Index.Box
                   key={index}
                   className={`message-container ${
@@ -451,6 +308,7 @@ const Message = ({ userInfo }) => {
                               src={image}
                               alt={`Message Attachment ${imageIndex + 1}`}
                               className="image-chat"
+                              onClick={() => handleClickOpen(msg.image)}
                             />
                             {imageIndex === 1 &&
                               msg.image.length > 2 &&
@@ -470,6 +328,7 @@ const Message = ({ userInfo }) => {
                               key={imageIndex + 2}
                               src={image}
                               alt={`Image ${imageIndex + 3}`}
+                              onClick={() => handleClickOpen(msg.image)}
                               className="image-chat"
                             />
                           ))}
@@ -543,6 +402,36 @@ const Message = ({ userInfo }) => {
           </Index.Box>
         </Index.Box>
       </Index.Box>
+
+      <Index.Dialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <Index.DialogTitle
+          className="custom-dialog-title"
+          id="customized-dialog-title"
+        >
+          <Index.Box className="image-container">
+            {image.length > 0 &&
+              image?.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Gallery ${index}`}
+                  className="image-chat"
+                />
+              ))}
+          </Index.Box>
+        </Index.DialogTitle>
+        <Index.IconButton
+          aria-label="close"
+          onClick={handleClose}
+          className="custom-dialog-close-button"
+        >
+          <Index.CloseIcon />
+        </Index.IconButton>
+      </Index.Dialog>
     </>
   );
 };

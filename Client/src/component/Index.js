@@ -26,6 +26,10 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import SendIcon from "@mui/icons-material/Send";
 import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import AttachmentIcon from "@mui/icons-material/Attachment";
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 
 export default {
   SideBar,
@@ -55,4 +59,8 @@ export default {
   InsertLinkIcon,
   Png,
   AttachmentIcon,
+  Dialog,
+  DialogTitle,
+  IconButton,
+  CloseIcon,
 };

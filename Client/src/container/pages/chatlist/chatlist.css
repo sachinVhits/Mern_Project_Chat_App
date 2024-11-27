@@ -37,9 +37,7 @@ body {
 }
 
 .selected-user {
-  /* background-color: #333; */
   background-color: #e4e4f4;
-  /* background-color: #f7f7fd; */
   color: black;
 }
 .list-item .content-main .css-rizt0-MuiTypography-root {
@@ -74,12 +72,8 @@ body {
   display: flex;
 }
 
-/* .tick-icon {
-  padding-top: 24px;
-} */
 .tick-icon {
   align-items: center;
-  /* gap: 5px; */
   padding-top: 12px;
   padding-right: 5px;
   justify-content: flex-end;
